@@ -1,0 +1,8 @@
+azure-functions
+azure-functions-durable
+azure-identity==1.17.1
+azure-keyvault-secrets
+azure-storage-blob
+requests
+PyMuPDF
+semantic-kernel

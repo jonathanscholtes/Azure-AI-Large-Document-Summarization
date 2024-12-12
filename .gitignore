@@ -1,0 +1,5 @@
+DataGenerator/
+appsettings.Development.json
+bin/
+obj/
+infra/scripts/artifacts/functionapp/app.zip
