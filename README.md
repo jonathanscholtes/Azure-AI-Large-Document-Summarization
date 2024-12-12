@@ -6,8 +6,32 @@
 # Large Document Summarization with Azure OpenAI GPT-4o and Durable Functions
 
 
+This repository showcases how to use Azure Durable Functions with the [**Fan-out/Fan-in**](https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp#fan-in-out) pattern to efficiently process and summarize large documents. By breaking down the workload into smaller, manageable tasks and combining the results, this approach creates a cohesive summary of the entire document.
 
+## Workflow Overview
 
+![System Architecture Diagram](./media/design1.png) 
+
+### 1. Triggering the Workflow
+- The process begins when a trigger event occurs, such as uploading a PDF to **Azure Blob Storage**.
+- This event activates the **Azure Function orchestrator**, initiating the summarization process.
+
+### 2. Fan-out Phase
+- The orchestrator divides the document into smaller sections (e.g., individual pages or logical segments).
+- Each section is sent to **Azure OpenAI Service**, where summaries for individual pages or sections are generated.
+
+### 3. Fan-in Phase
+- The individual summaries are aggregated and sent back to **Azure OpenAI Service**.
+- Azure OpenAI generates a cohesive, final summary for the entire document.
+
+## Benefits
+- **Scalability:** Processes large documents in parallel for faster execution.
+- **Efficiency:** Leverages Azure's serverless ecosystem for seamless orchestration.
+- **Flexibility:** Easily integrates with Azure Blob Storage and Azure OpenAI for dynamic workloads.
+
+Explore the repository to learn more about setting up Durable Functions and optimizing the summarization workflow.
+
+ 
 ## Requirements
 - Azure subscription for deploying Azure GenAI RAG Application.
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) (Command Line Interface)
